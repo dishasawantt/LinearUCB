@@ -19,18 +19,22 @@
         .container {
             max-width: 1000px;
             margin: 0 auto;
-            padding: 40px 32px 140px;
+            padding: 20px 32px 140px;
+            min-height: calc(100vh - 80px);
         }
 
         .scene {
             opacity: 0;
             display: none;
             text-align: center;
+            padding-top: 20px;
         }
 
         .scene.active {
             opacity: 1;
-            display: block;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
             animation: fadeIn 0.5s ease;
         }
 
@@ -551,7 +555,7 @@
 </head>
 <body>
     <div class="container">
-        <div class="scene active" id="scene0" style="display:flex;flex-direction:column;justify-content:flex-start;height:calc(100vh - 180px);padding-top:20px;">
+        <div class="scene active" id="scene0">
             <h1 class="scene-title" style="font-size:32px;margin-bottom:8px;">📘 <strong>Linear UCB</strong></h1>
             <p class="subtitle" style="font-size:16px;margin-bottom:20px;color:#1f2937;">Contextual bandit with linear reward model — personalizes decisions using patient features</p>
             
@@ -908,6 +912,7 @@
                 currentScene++;
                 document.getElementById(`scene${currentScene}`).classList.add('active');
                 updateNavigation();
+                window.scrollTo(0, 0);
                 setTimeout(startAnimations, 100);
             }
         }
@@ -918,6 +923,7 @@
                 currentScene--;
                 document.getElementById(`scene${currentScene}`).classList.add('active');
                 updateNavigation();
+                window.scrollTo(0, 0);
                 setTimeout(startAnimations, 100);
             }
         }
